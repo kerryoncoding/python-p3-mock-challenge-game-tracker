@@ -2,6 +2,15 @@ class Game:
     def __init__(self, title):
         self.title = title
 
+    @property
+    def title(self):
+        return self._title
+    
+    @title.setter
+    def title(self, value):
+        if isinstance(value, str):
+            self._title = value
+
     def results(self):
         pass
 
