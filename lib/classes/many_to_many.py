@@ -1,4 +1,4 @@
-class Game:
+class Game():
     def __init__(self, title):
         self.title = title
 
@@ -12,8 +12,8 @@ class Game:
             self._title = value
 
     def results(self):
-        pass
-
+        return (Result())
+        
     def players(self):
         pass
 
@@ -21,8 +21,11 @@ class Game:
         pass
 
 class Player:
+    # all = []
+
     def __init__(self, username):
         self.username = username
+        # Player.all.append(self)
 
     def results(self):
         pass
@@ -37,7 +40,10 @@ class Player:
         pass
 
 class Result:
+    all = []
+
     def __init__(self, player, game, score):
         self.player = player
         self.game = game
         self.score = score
+        Result.all.append(self)
