@@ -1,8 +1,16 @@
+
+import ipdb
+
+
 class Game:
     all =[]   
 
     def __init__(self, title):
         self.title = title
+        # self._players =[]
+        # if players:
+        #     for player in players
+        #         self.add_player(player)
         Game.all.append(self)
 
     @property
@@ -19,12 +27,13 @@ class Game:
         return [result for result in Result.all if result.game == self]
         
     def players(self):
-        my_list = [player for player in Result.all if player.game == self]
-        return set(my_list)
+        return [result.player for result in self.results()]
+        # return set(my_list)
 
     def average_score(self, player):
         pass
 
+   
 
 class Player:
     all = []
@@ -46,7 +55,7 @@ class Player:
         return [result for result in Result.all if result.player == self]
 
     def games_played(self):
-        my_list = [game for game in Game.all if game.player == self]
+        my_list = [result.game for result in self.results()]
         return set(my_list)
     # not sure if this is right ^^^^^^^^^^^^
 
