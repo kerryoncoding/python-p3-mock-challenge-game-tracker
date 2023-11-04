@@ -29,7 +29,13 @@ class Game:
         return list(player_set)     
         
     def average_score(self, player):
-        pass
+        # temp_list = (result for result in Result.all if player == self)
+        # temp_sum = sum(temp_list)
+    # ----
+        # get all the results for this game:
+        temp_list = [score for score in Result.all if player.game ==self]
+        temp_sum = sum(temp_list)
+        return (temp_sum)/len(temp_sum)
 
    
 
@@ -55,7 +61,6 @@ class Player:
     def games_played(self):
         my_list = [result.game for result in self.results()]
         return set(my_list)
-    # not sure if this is right ^^^^^^^^^^^^
 
     def played_game(self, game):
         if self in game:
