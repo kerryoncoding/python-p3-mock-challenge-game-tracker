@@ -1,7 +1,6 @@
 
 import ipdb
 
-
 class Game:
     all =[]   
 
@@ -28,15 +27,11 @@ class Game:
         player_set = set(player_list)
         return list(player_set)     
         
-    def average_score(self, player):
-        # temp_list = (result for result in Result.all if player == self)
-        # temp_sum = sum(temp_list)
-    # ----
-        # get all the results for this game:
-        temp_list = [score for score in Result.all if player.game ==self]
-        temp_sum = sum(temp_list)
-        return (temp_sum)/len(temp_sum)
-
+    def average_score(self, player):         
+        player_result_list = [result.score for result in player.results() if result.game == self]
+        temp_sum = sum(player_result_list)
+        return (temp_sum)/len(player_result_list)
+     
    
 
 class Player:
