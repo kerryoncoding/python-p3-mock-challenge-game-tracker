@@ -7,10 +7,6 @@ class Game:
 
     def __init__(self, title):
         self.title = title
-        # self._players =[]
-        # if players:
-        #     for player in players
-        #         self.add_player(player)
         Game.all.append(self)
 
     @property
@@ -24,12 +20,14 @@ class Game:
                 self._title = value
 
     def results(self):
+        #return a new list [result, result, result...] by going through Result.all list if item result.game == self
         return [result for result in Result.all if result.game == self]
         
     def players(self):
-        return [result.player for result in self.results()]
-        # return set(my_list)
-
+        player_list = [result.player for result in self.results()]
+        player_set = set(player_list)
+        return list(player_set)     
+        
     def average_score(self, player):
         pass
 
