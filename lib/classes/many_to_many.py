@@ -54,8 +54,12 @@ class Player:
         return [result for result in Result.all if result.player == self]
 
     def games_played(self):
-        my_list = [result.game for result in self.results()]
-        return set(my_list)
+        # check is typeof game
+        # my_list = [result.game for result in self.results()]
+        # return set(my_list)
+        return list({result.game for result in self.results()})
+
+    
 
     def played_game(self, game):
         if self in game:
