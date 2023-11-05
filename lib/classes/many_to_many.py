@@ -54,24 +54,25 @@ class Player:
         return [result for result in Result.all if result.player == self]
 
     def games_played(self):
-        # check is typeof game
-        # my_list = [result.game for result in self.results()]
-        # return set(my_list)
+        # list of all games the PLAYER played
         return list({result.game for result in self.results()})
 
-    
-
     def played_game(self, game):
-        if self in game:
+        # Did the player play that game (T/F)
+        if game in self.games_played():
             return True
         else:
             return False
 
     def num_times_played(self, game):
-        pass
-
-
-
+        games_played = [result.game for result in self.results()]
+        return games_played.count(game)
+        # count = 0
+        # for game in self.games_played():
+        #     if (game == game):
+        #         count = count + 1
+        # return count
+    
 class Result:
 
     all = []
